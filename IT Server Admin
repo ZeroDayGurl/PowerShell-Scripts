@@ -1,0 +1,52 @@
+CodeCadmy IT Administration Server Invetory PS project
+
+$dbServers = @("DatabaseServer1","DatabaseServer2")
+$webServers = @("WebServer1","WebServer2","WebServer3")
+$storageServers = @("StorageServer1")
+$server =@("StorageServer4")
+# Add code below
+if ($dbServers-contains $server){
+Write-Host "Already Added to Database"
+}
+
+elseif ($webServers -contains $server[0]){
+Write-Host "Added to WebServers"
+
+}
+
+elseif ($storageServers -contains $server[0]){
+
+  Write-Host "Added to storage servers"
+}
+
+else {
+switch ($server[0]){
+  {$_ -like "*Database*"} {
+    Write-Host "This is a database server"
+  }
+  {$_ -like "*Storage*"}{
+    Write-Host "This is a storage server"
+  }
+  {$_ -like "*Web*"}{
+    Write-Host "This is a web server"}
+
+      default {
+
+      Write-Host "Server location not found"
+    }
+  }
+} 
+
+foreach ($server in $dbServers){
+  Write-Host "DB-Server: $server"
+}
+
+foreach ($server in $webServers) {
+  Write-Host "Web-Server: $server"
+}
+
+foreach ($server in $storageServers) {
+  Write-Host "Storage-Server: $server"
+}
+
+
